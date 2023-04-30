@@ -1,0 +1,22 @@
+{
+	"name": "@roenlie/gate",
+	"version": "0.0.1",
+	"description": "",
+	"private": true,
+	"main": "./dist/gate/index.js",
+	"typings": "./dist/gate/index.d.ts",
+	"type": "module",
+	"scripts": {
+		"dev": "vite",
+		"preview": "vite preview",
+		"build": "vite build",
+		"updatedeps": "pnpm update --latest --interactive",
+		"typecheck": "tsc --project ./src/tsconfig.json"
+	},
+	"author": "Kristoffer Roen-Lie",
+	"license": "MIT",
+	"dependencies": {},
+	"devDependencies": {
+		"vite": "^4.3.1"
+	}
+}

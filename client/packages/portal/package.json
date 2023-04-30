@@ -1,0 +1,33 @@
+{
+	"name": "@roenlie/gate",
+	"version": "0.0.1",
+	"description": "",
+	"private": true,
+	"main": "./dist/gate/index.js",
+	"typings": "./dist/gate/index.d.ts",
+	"type": "module",
+	"scripts": {
+		"dev": "vite",
+		"preview": "vite preview",
+		"build": "vite build",
+		"updatedeps": "pnpm update --latest --interactive",
+		"typecheck": "tsc --project ./src/tsconfig.json"
+	},
+	"author": "Kristoffer Roen-Lie",
+	"license": "MIT",
+	"dependencies": {
+		"@roenlie/mimic-core": "^0.0.8",
+		"@roenlie/mimic-lit": "^0.0.7",
+		"@vaadin/router": "^1.7.5",
+		"lit": "^2.7.2",
+		"reflect-metadata": "^0.1.13",
+		"tabbable": "^6.1.1",
+		"ts-pattern": "^4.2.2",
+		"tslib": "^2.5.0"
+	},
+	"devDependencies": {
+		"@roenlie/package-toolbox": "^0.0.3",
+		"dotenv": "^16.0.3",
+		"vite": "^4.3.1"
+	}
+}

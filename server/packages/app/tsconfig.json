@@ -1,0 +1,32 @@
+{
+	"extends": "@roenlie/tsconfig",
+	"compilerOptions": {
+		"moduleResolution": "NodeNext",
+		"module": "ESNext",
+		"target": "ESNext",
+		"outDir": "../dist",
+		"rootDir": ".",
+		"baseUrl": "./src",
+		"noEmit": true,
+		"emitDeclarationOnly": false,
+		"incremental": false,
+	},
+	"ts-node": {
+		"transpileOnly": true,
+		"files": true,
+		"esm": true,
+		"compilerOptions": {
+			"module": "ESNext"
+		}
+	},
+	"include": [
+		"./src/**/*.ts",
+		"./src/**/*.js",
+		"services/planner/planner-services.ts",
+	],
+	"exclude": [
+		"./**/*.test.ts",
+		"./**/*.bench.ts",
+		"./**/*.editor.d.ts"
+	]
+}

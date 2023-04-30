@@ -1,0 +1,26 @@
+{
+	"type": "module",
+	"scripts": {
+		"dev": "pnpm --filter=./packages/* run dev",
+		"build": "pnpm tsm ./scripts/build.ts",
+		"file-to-workspace-deps": "pnpm tsm ./scripts/modify-deps/file-to-workspace-deps.ts",
+		"workspace-to-file-deps": "pnpm tsm ./scripts/modify-deps/workspace-to-file-deps.ts",
+		"clean:node": "rimraf **/node_modules",
+		"clean:dist": "rimraf **/dist"
+	},
+	"devDependencies": {
+		"@roenlie/eslint-config": "^1.0.0",
+		"@roenlie/tsconfig": "^1.0.0",
+		"@types/node": "18.15.11",
+		"@typescript-eslint/eslint-plugin": "^5.59.0",
+		"@typescript-eslint/parser": "^5.59.0",
+		"eslint": "^8.38.0",
+		"eslint-plugin-import": "^2.27.5",
+		"eslint-plugin-lit": "^1.8.3",
+		"eslint-plugin-simple-import-sort": "^10.0.0",
+		"globby": "^13.1.4",
+		"rimraf": "^5.0.0",
+		"tsm": "^2.3.0",
+		"typescript": "^5.0.4"
+	}
+}
