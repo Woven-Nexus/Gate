@@ -77,6 +77,9 @@ importers:
         specifier: ^2.5.0
         version: 2.5.0
     devDependencies:
+      '@roenlie/gate-utilities':
+        specifier: workspace:^
+        version: link:../utilities
       '@roenlie/package-toolbox':
         specifier: ^0.0.3
         version: 0.0.3(@types/node@18.15.11)(typescript@5.0.4)
@@ -117,12 +120,28 @@ importers:
         specifier: ^2.5.0
         version: 2.5.0
     devDependencies:
+      '@roenlie/gate-utilities':
+        specifier: workspace:^
+        version: link:../utilities
       '@roenlie/package-toolbox':
         specifier: ^0.0.3
         version: 0.0.3(@types/node@18.15.11)(typescript@5.0.4)
       dotenv:
         specifier: ^16.0.3
         version: 16.0.3
+      vite:
+        specifier: ^4.3.1
+        version: 4.3.1(@types/node@18.15.11)
+
+  packages/utilities:
+    dependencies:
+      dotenv:
+        specifier: ^16.0.3
+        version: 16.0.3
+    devDependencies:
+      '@roenlie/package-toolbox':
+        specifier: ^0.0.3
+        version: 0.0.3(@types/node@18.15.11)(typescript@5.0.4)
       vite:
         specifier: ^4.3.1
         version: 4.3.1(@types/node@18.15.11)
@@ -1059,7 +1078,6 @@ packages:
   /dotenv@16.0.3:
     resolution: {integrity: sha512-7GO6HghkA5fYG9TYnNxi14/7K9f5occMlp3zXAuSxn7CKCxt9xbNWG7yF8hTCSUchlfWSe3uLmlPfigevRItzQ==}
     engines: {node: '>=12'}
-    dev: true
 
   /emoji-regex@8.0.0:
     resolution: {integrity: sha512-MSjYzcWNOA0ewAHpz0MxpYFvwg6yjy1NG3xteoqz644VCo/RPgnr1/GGt+ic3iJTzQ8Eu3TdM14SawnVUmGE6A==}

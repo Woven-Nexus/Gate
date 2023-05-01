@@ -26,6 +26,7 @@
 		"tslib": "^2.5.0"
 	},
 	"devDependencies": {
+		"@roenlie/gate-utilities": "workspace:^",
 		"@roenlie/package-toolbox": "^0.0.3",
 		"dotenv": "^16.0.3",
 		"vite": "^4.3.1"

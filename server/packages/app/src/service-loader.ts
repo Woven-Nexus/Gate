@@ -56,7 +56,8 @@ export const serviceLoader = (
 					const bundle = await import(relativePath)
 						.then((m: {default: ServiceBundle}) => m.default);
 
-					bundle.connect(app);
+					if (bundle.id === appId)
+						bundle.connect(app);
 				});
 
 				await Promise.all(importPromises);

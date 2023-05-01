@@ -4,30 +4,24 @@
 		"moduleResolution": "NodeNext",
 		"module": "ESNext",
 		"target": "ESNext",
-		"outDir": "../dist",
+		"outDir": "./dist",
 		"rootDir": ".",
-		"baseUrl": "./src",
+		"baseUrl": ".",
 		"noEmit": true,
 		"emitDeclarationOnly": false,
 		"incremental": false,
-	},
-	"ts-node": {
-		"transpileOnly": true,
-		"files": true,
-		"esm": true,
-		"compilerOptions": {
-			"module": "ESNext"
-		}
+		"types": [
+			"vite/client",
+			"node"
+		]
 	},
 	"include": [
-		"./src/**/*.ts",
-		"./src/**/*.js",
-		"./services/**/*.ts",
-		"./services/**/*.js",
+		"./**/*.ts",
+		"./**/*.js",
 	],
 	"exclude": [
 		"./**/*.test.ts",
+		"./**/*.mock.ts",
 		"./**/*.bench.ts",
-		"./**/*.editor.d.ts"
 	]
 }

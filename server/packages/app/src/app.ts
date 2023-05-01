@@ -1,5 +1,5 @@
 import { feathers } from '@feathersjs/feathers';
-import { bodyParser, errorHandler, koa, rest, serveStatic } from '@feathersjs/koa';
+import { bodyParser, cors, errorHandler, koa, rest, serveStatic } from '@feathersjs/koa';
 import socketio from '@feathersjs/socketio';
 
 import { serviceLoader } from './service-loader.js';
@@ -22,6 +22,8 @@ app.use(errorHandler());
 
 // Parse JSON request bodies
 app.use(bodyParser());
+
+app.use(cors());
 
 // Register the dynamic service loader
 app.configure(serviceLoader('services'));

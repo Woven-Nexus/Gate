@@ -1,0 +1,33 @@
+{
+	"name": "@roenlie/gate-utilities",
+	"version": "0.0.1",
+	"description": "",
+	"private": true,
+	"main": "./dist/index.js",
+	"typings": "./dist/index.d.ts",
+	"type": "module",
+	"exports": {
+		".": {
+			"import": "./dist/index.js"
+		},
+		"./build": {
+			"import": "./dist/build/config.js"
+		},
+		"./styles": {
+			"import": "./dist/styles/load.js"
+		}
+	},
+	"scripts": {
+		"build": "pnpm vite build && pnpm build:types",
+		"build:types": "tsc --project ./src/tsconfig.json"
+	},
+	"author": "Kristoffer Roen-Lie",
+	"license": "MIT",
+	"dependencies": {
+		"dotenv": "^16.0.3"
+	},
+	"devDependencies": {
+		"@roenlie/package-toolbox": "^0.0.3",
+		"vite": "^4.3.1"
+	}
+}
