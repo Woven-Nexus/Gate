@@ -1,4 +1,4 @@
-import './app.cmp.js';
+import './components/app.cmp.js';
 
 import { loadStyles } from '@roenlie/gate-utilities/styles';
 
