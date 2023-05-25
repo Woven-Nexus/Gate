@@ -105,7 +105,9 @@
 				"splitTerminals": [
 					{
 						"name": "server_root",
-						"commands": []
+						"commands": [
+							"cd ../server"
+						]
 					}
 				]
 			},
@@ -114,7 +116,7 @@
 					{
 						"name": "server_app",
 						"commands": [
-							"cd packages/app",
+							"cd ../server/packages/app",
 						]
 					}
 				]

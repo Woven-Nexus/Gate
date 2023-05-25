@@ -1,4 +1,3 @@
-import { log } from 'node:console';
 import { join, normalize, resolve } from 'node:path';
 
 import fs from 'fs';
@@ -6,7 +5,7 @@ import fs from 'fs';
 
 declare global {
 	interface ServiceTypes {
-		'api/routing': RoutesController;
+		'api/routes': RoutesController;
 	}
 }
 

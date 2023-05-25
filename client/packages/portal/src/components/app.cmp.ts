@@ -15,7 +15,17 @@ import { GateLayout } from './layout.cmp.js';
 export class GateApp extends LitElement {
 
 	protected router = new Router();
-	@provide('mainRoutes') protected mainRoutes: Route[] = [];
+	@provide('mainRoutes') protected mainRoutes: Route[] = [
+		{
+			path:      'upload-app',
+			component: 'gate-upload-app-page',
+			internal:  true,
+			action:    async () => {
+				await import('./upload-app.cmp.js');
+			},
+		} as Route,
+	];
+
 	protected rootRoutes: Route[] = [
 		{
 			path:      '/',
@@ -29,7 +39,7 @@ export class GateApp extends LitElement {
 
 		const routes = await getRoutesAction() ?? [];
 
-		this.mainRoutes.push(...routes.map(route => ({
+		this.mainRoutes.unshift(...routes.map(route => ({
 			path:      route,
 			component: `gate-app-${ route }`,
 			action:    async () => {

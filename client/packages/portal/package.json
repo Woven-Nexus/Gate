@@ -16,20 +16,20 @@
 	"author": "Kristoffer Roen-Lie",
 	"license": "MIT",
 	"dependencies": {
-		"@roenlie/mimic-core": "^0.0.13",
-		"@roenlie/mimic-elements": "^0.0.0",
-		"@roenlie/mimic-lit": "^0.0.15",
+		"@roenlie/mimic-core": "^0.0.20",
+		"@roenlie/mimic-elements": "^0.0.6",
+		"@roenlie/mimic-lit": "^0.0.19",
 		"@vaadin/router": "^1.7.5",
 		"lit": "^2.7.4",
 		"reflect-metadata": "^0.1.13",
 		"tabbable": "^6.1.2",
-		"ts-pattern": "^4.2.2",
-		"tslib": "^2.5.0"
+		"ts-pattern": "^4.3.0",
+		"tslib": "^2.5.2"
 	},
 	"devDependencies": {
 		"@roenlie/gate-utilities": "workspace:^",
-		"@roenlie/package-toolbox": "^0.0.3",
+		"@roenlie/package-toolbox": "^0.0.16",
 		"dotenv": "^16.0.3",
-		"vite": "^4.3.4"
+		"vite": "^4.3.8"
 	}
 }
