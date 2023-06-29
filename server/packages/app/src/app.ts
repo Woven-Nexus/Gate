@@ -34,8 +34,6 @@ app.use(bodyParser());
 
 app.configure((app) => {
 	app.use(async (context, next) => {
-		//context.set('Access-Control-Allow-Origin', context.headers.origin);
-
 		if (context.method === 'OPTIONS') {
 			context.body = {
 				status: 0,
@@ -47,10 +45,6 @@ app.configure((app) => {
 	});
 });
 
-//app.use(cors({
-//	allowMethods: [ 'GET', 'HEAD', 'PUT', 'POST', 'DELETE', 'PATCH', 'OPTIONS' ],
-//	credentials:  true,
-//}));
 app.use(cors());
 
 // Register the dynamic service loader

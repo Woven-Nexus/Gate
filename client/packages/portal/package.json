@@ -18,7 +18,7 @@
 	"dependencies": {
 		"@roenlie/mimic-core": "^0.0.20",
 		"@roenlie/mimic-elements": "^0.0.6",
-		"@roenlie/mimic-lit": "^0.0.19",
+		"@roenlie/mimic-lit": "^0.0.22",
 		"@vaadin/router": "^1.7.5",
 		"lit": "^2.7.4",
 		"reflect-metadata": "^0.1.13",
@@ -29,7 +29,7 @@
 	"devDependencies": {
 		"@roenlie/gate-utilities": "workspace:^",
 		"@roenlie/package-toolbox": "^0.0.16",
-		"dotenv": "^16.0.3",
-		"vite": "^4.3.8"
+		"dotenv": "^16.1.0",
+		"vite": "^4.3.9"
 	}
 }

@@ -82,7 +82,7 @@ importers:
         version: link:../utilities
       '@roenlie/package-toolbox':
         specifier: ^0.0.3
-        version: 0.0.3(@types/node@20.2.4)(typescript@5.0.4)
+        version: 0.0.3(@types/node@20.2.5)(typescript@5.0.4)
       dotenv:
         specifier: ^16.0.3
         version: 16.0.3
@@ -91,7 +91,7 @@ importers:
         version: 13.1.4
       vite:
         specifier: ^4.3.1
-        version: 4.3.1(@types/node@20.2.4)
+        version: 4.3.1(@types/node@20.2.5)
 
   packages/portal:
     dependencies:
@@ -102,8 +102,8 @@ importers:
         specifier: ^0.0.6
         version: 0.0.6
       '@roenlie/mimic-lit':
-        specifier: ^0.0.19
-        version: 0.0.19
+        specifier: ^0.0.22
+        version: 0.0.22
       '@vaadin/router':
         specifier: ^1.7.5
         version: 1.7.5
@@ -128,13 +128,13 @@ importers:
         version: link:../utilities
       '@roenlie/package-toolbox':
         specifier: ^0.0.16
-        version: 0.0.16(@types/node@20.2.4)
+        version: 0.0.16(@types/node@20.2.5)
       dotenv:
-        specifier: ^16.0.3
-        version: 16.0.3
+        specifier: ^16.1.0
+        version: 16.1.0
       vite:
-        specifier: ^4.3.8
-        version: 4.3.8(@types/node@20.2.4)
+        specifier: ^4.3.9
+        version: 4.3.9(@types/node@20.2.5)
 
   packages/utilities:
     dependencies:
@@ -144,10 +144,10 @@ importers:
     devDependencies:
       '@roenlie/package-toolbox':
         specifier: ^0.0.3
-        version: 0.0.3(@types/node@20.2.4)(typescript@5.0.4)
+        version: 0.0.3(@types/node@20.2.5)(typescript@5.0.4)
       vite:
         specifier: ^4.3.1
-        version: 4.3.1(@types/node@20.2.4)
+        version: 4.3.1(@types/node@20.2.5)
 
 packages:
 
@@ -778,6 +778,18 @@ packages:
       tslib: 2.5.2
     dev: false
 
+  /@roenlie/mimic-lit@0.0.22:
+    resolution: {integrity: sha512-2oSXX4PlEKJSiQ8DCsaGHz+To49/a/e/plB5NCWkWZ6c3ebYBVkGpmkCYIRNyrexl/Er81OF562tfBKMbzfKdQ==}
+    dependencies:
+      '@roenlie/mimic-core': 0.0.20
+      fast-equals: 5.0.1
+      inversify: 6.0.1
+      lit: 2.7.4
+      nanoid: 4.0.2
+      reflect-metadata: 0.1.13
+      tslib: 2.5.2
+    dev: false
+
   /@roenlie/mimic-lit@0.0.7:
     resolution: {integrity: sha512-b7o183c2DGdTQv1qZk6ZCD2nlQawrd3SjgqtxlwA6bs6PSiBEa04iN712ZS05T4q9eWjc/QYMFltOBpgD2B0nw==}
     dependencies:
@@ -790,7 +802,7 @@ packages:
       tslib: 2.5.0
     dev: false
 
-  /@roenlie/package-toolbox@0.0.16(@types/node@20.2.4):
+  /@roenlie/package-toolbox@0.0.16(@types/node@20.2.5):
     resolution: {integrity: sha512-h3kPn61ZzaXGltosGpLDWKsFVaGN4XefSqIIjvt49CGAE5UN6l7IGq0FY5z5mf9/X+MMmTMQXOj+tCwlJZQbCw==}
     hasBin: true
     dependencies:
@@ -798,7 +810,7 @@ packages:
       esbuild: 0.17.19
       fs-extra: 11.1.1
       globby: 13.1.4
-      ts-node: 10.9.1(@swc/core@1.3.56)(@types/node@20.2.4)(typescript@5.0.4)
+      ts-node: 10.9.1(@swc/core@1.3.56)(@types/node@20.2.5)(typescript@5.0.4)
       tslib: 2.5.2
       tsup: 6.7.0(ts-node@10.9.1)(typescript@5.0.4)
       typescript: 5.0.4
@@ -811,13 +823,13 @@ packages:
       - supports-color
     dev: true
 
-  /@roenlie/package-toolbox@0.0.3(@types/node@20.2.4)(typescript@5.0.4):
+  /@roenlie/package-toolbox@0.0.3(@types/node@20.2.5)(typescript@5.0.4):
     resolution: {integrity: sha512-BfBAQNYxGu40bHXskx04SEiLEUnP47RmyXe7U8eVctCN2STq6G8Co5skbqgphEfwuLV4SzNYtxWPOEPtV8kd0w==}
     hasBin: true
     dependencies:
       '@swc/core': 1.3.56
       esbuild: 0.17.18
-      ts-node: 10.9.1(@swc/core@1.3.56)(@types/node@20.2.4)(typescript@5.0.4)
+      ts-node: 10.9.1(@swc/core@1.3.56)(@types/node@20.2.5)(typescript@5.0.4)
       tslib: 2.5.0
       yargs: 17.7.2
     transitivePeerDependencies:
@@ -971,8 +983,8 @@ packages:
     resolution: {integrity: sha512-E5Kwq2n4SbMzQOn6wnmBjuK9ouqlURrcZDVfbo9ftDDTFt3nk7ZKK4GMOzoYgnpQJKcxwQw+lGaBvvlMo0qN/Q==}
     dev: true
 
-  /@types/node@20.2.4:
-    resolution: {integrity: sha512-ni5f8Xlf4PwnT/Z3f0HURc3ZSw8UyrqMqmM3L5ysa7VjHu8c3FOmIo1nKCcLrV/OAmtf3N4kFna/aJqxsfEtnA==}
+  /@types/node@20.2.5:
+    resolution: {integrity: sha512-JJulVEQXmiY9Px5axXHeYGLSjhkZEnD+MDPDGbCbIAbMslkKwmygtZFy1X6s/075Yo94sf8GuSlFfPzysQrWZQ==}
     dev: true
 
   /@types/semver@7.3.13:
@@ -1429,6 +1441,11 @@ packages:
   /dotenv@16.0.3:
     resolution: {integrity: sha512-7GO6HghkA5fYG9TYnNxi14/7K9f5occMlp3zXAuSxn7CKCxt9xbNWG7yF8hTCSUchlfWSe3uLmlPfigevRItzQ==}
     engines: {node: '>=12'}
+
+  /dotenv@16.1.0:
+    resolution: {integrity: sha512-XiwP/4cqatBNLEnKe169vPZCrovUmYngyVA4DgZ3uIVLJfZaBgr4uT0EF2TrEQqgWDDlekGo0muEYme5SR78Ww==}
+    engines: {node: '>=12'}
+    dev: true
 
   /emoji-regex@8.0.0:
     resolution: {integrity: sha512-MSjYzcWNOA0ewAHpz0MxpYFvwg6yjy1NG3xteoqz644VCo/RPgnr1/GGt+ic3iJTzQ8Eu3TdM14SawnVUmGE6A==}
@@ -2848,12 +2865,21 @@ packages:
         optional: true
     dependencies:
       lilconfig: 2.1.0
-      ts-node: 10.9.1(@swc/core@1.3.56)(@types/node@20.2.4)(typescript@5.0.4)
+      ts-node: 10.9.1(@swc/core@1.3.56)(@types/node@20.2.5)(typescript@5.0.4)
       yaml: 1.10.2
     dev: true
 
   /postcss@8.4.23:
     resolution: {integrity: sha512-bQ3qMcpF6A/YjR55xtoTr0jGOlnPOKAIMdOWiv0EIT6HVPEaJiJB4NLljSbiHoC2RX7DN5Uvjtpbg1NPdwv1oA==}
+    engines: {node: ^10 || ^12 || >=14}
+    dependencies:
+      nanoid: 3.3.6
+      picocolors: 1.0.0
+      source-map-js: 1.0.2
+    dev: true
+
+  /postcss@8.4.24:
+    resolution: {integrity: sha512-M0RzbcI0sO/XJNucsGjvWU9ERWxb/ytp1w6dKtxTKgixdtQDq4rmx/g8W1hnaheq9jgwL/oyEdH5Bc4WwJKMqg==}
     engines: {node: ^10 || ^12 || >=14}
     dependencies:
       nanoid: 3.3.6
@@ -2946,14 +2972,6 @@ packages:
 
   /rollup@3.21.1:
     resolution: {integrity: sha512-GpUgqWCw56OSiBKf7lcAITstYiBV1/EKaKYPl9r8HgAxc6/qYAVw1PaHWnvHWFziRaf4HsVCDLq/IGtBi1K/Zw==}
-    engines: {node: '>=14.18.0', npm: '>=8.0.0'}
-    hasBin: true
-    optionalDependencies:
-      fsevents: 2.3.2
-    dev: true
-
-  /rollup@3.22.0:
-    resolution: {integrity: sha512-imsigcWor5Y/dC0rz2q0bBt9PabcL3TORry2hAa6O6BuMvY71bqHyfReAz5qyAqiQATD1m70qdntqBfBQjVWpQ==}
     engines: {node: '>=14.18.0', npm: '>=8.0.0'}
     hasBin: true
     optionalDependencies:
@@ -3175,7 +3193,7 @@ packages:
     resolution: {integrity: sha512-Y/arvbn+rrz3JCKl9C4kVNfTfSm2/mEp5FSz5EsZSANGPSlQrpRI5M4PKF+mJnE52jOO90PnPSc3Ur3bTQw0gA==}
     dev: true
 
-  /ts-node@10.9.1(@swc/core@1.3.56)(@types/node@20.2.4)(typescript@5.0.4):
+  /ts-node@10.9.1(@swc/core@1.3.56)(@types/node@20.2.5)(typescript@5.0.4):
     resolution: {integrity: sha512-NtVysVPkxxrwFGUUxGYhfux8k78pQB3JqYBXlLRZgdGUqTO5wU/UyHop5p70iEbGhB7q5KmiZiU0Y3KlJrScEw==}
     hasBin: true
     peerDependencies:
@@ -3195,7 +3213,7 @@ packages:
       '@tsconfig/node12': 1.0.11
       '@tsconfig/node14': 1.0.3
       '@tsconfig/node16': 1.0.4
-      '@types/node': 20.2.4
+      '@types/node': 20.2.5
       acorn: 8.8.2
       acorn-walk: 8.2.0
       arg: 4.1.3
@@ -3371,7 +3389,7 @@ packages:
       fsevents: 2.3.2
     dev: true
 
-  /vite@4.3.1(@types/node@20.2.4):
+  /vite@4.3.1(@types/node@20.2.5):
     resolution: {integrity: sha512-EPmfPLAI79Z/RofuMvkIS0Yr091T2ReUoXQqc5ppBX/sjFRhHKiPPF/R46cTdoci/XgeQpB23diiJxq5w30vdg==}
     engines: {node: ^14.18.0 || >=16.0.0}
     hasBin: true
@@ -3396,7 +3414,7 @@ packages:
       terser:
         optional: true
     dependencies:
-      '@types/node': 20.2.4
+      '@types/node': 20.2.5
       esbuild: 0.17.18
       postcss: 8.4.23
       rollup: 3.21.1
@@ -3404,8 +3422,8 @@ packages:
       fsevents: 2.3.2
     dev: true
 
-  /vite@4.3.8(@types/node@20.2.4):
-    resolution: {integrity: sha512-uYB8PwN7hbMrf4j1xzGDk/lqjsZvCDbt/JC5dyfxc19Pg8kRm14LinK/uq+HSLNswZEoKmweGdtpbnxRtrAXiQ==}
+  /vite@4.3.9(@types/node@20.2.5):
+    resolution: {integrity: sha512-qsTNZjO9NoJNW7KnOrgYwczm0WctJ8m/yqYAMAK9Lxt4SoySUfS5S8ia9K7JHpa3KEeMfyF8LoJ3c5NeBJy6pg==}
     engines: {node: ^14.18.0 || >=16.0.0}
     hasBin: true
     peerDependencies:
@@ -3429,10 +3447,10 @@ packages:
       terser:
         optional: true
     dependencies:
-      '@types/node': 20.2.4
+      '@types/node': 20.2.5
       esbuild: 0.17.19
-      postcss: 8.4.23
-      rollup: 3.22.0
+      postcss: 8.4.24
+      rollup: 3.23.0
     optionalDependencies:
       fsevents: 2.3.2
     dev: true
