@@ -1,4 +1,5 @@
 using GateCDN.Endpoints;
+using GateCDN.Services.Storage;
 using GateCDN.Startup;
 using Microsoft.AspNetCore.Http.Json;
 using Serilog;
@@ -15,10 +16,6 @@ builder.Host.UseSerilog((_, config) => {
 // Adds Cors profiles
 builder.AddCors();
 
-// Add storage config
-builder.Services.Configure<StorageConfig>(
-	builder.Configuration.GetSection("StorageConfig"));
-
 // Control caching
 builder.Services.AddOutputCache();
 
@@ -31,6 +28,13 @@ builder.Services.Configure<JsonOptions>(options => {
 // Add Swagger
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
+
+// Add storage config
+builder.Services.Configure<StorageConfig>(
+	builder.Configuration.GetSection("StorageConfig"));
+
+// Add services
+builder.Services.AddTransient<StorageService>();
 
 var app = builder.Build();
 
@@ -47,5 +51,6 @@ app.UseMiddleware<AddCacheHeadersMiddleware>();
 
 // Register custom endpoints
 app.UseStorageApi();
+app.UseServeApi();
 
 app.Run();
