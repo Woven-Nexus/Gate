@@ -50,7 +50,8 @@ app.UseOutputCache();
 app.UseMiddleware<AddCacheHeadersMiddleware>();
 
 // Register custom endpoints
+app.UseInstanceApi();
 app.UseStorageApi();
-app.UseServeApi();
+app.UseServeClientApi();
 
 app.Run();

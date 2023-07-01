@@ -17,7 +17,7 @@ public class StorageService {
 		_config = config.Value;
 	}
 
-	public async Task UploadFile(
+	public async Task UploadClientFile(
 		string application,
 		string version,
 		string path,
@@ -25,7 +25,7 @@ public class StorageService {
 	) {
 		// Get the path to the folder where you want to store the file
 		var uploadPath = Path.Combine(
-			_environment.WebRootPath, "uploads", application, version, path);
+			_environment.WebRootPath, "vault", "live", "clients", application, version, path);
 
 		// Create the directory if it doesn't exist (including nested directories)
 		Directory.CreateDirectory(uploadPath);
@@ -38,13 +38,13 @@ public class StorageService {
 		await file.CopyToAsync(stream);
 	}
 
-	public async Task UploadZip(
+	public async Task UploadClientZip(
 		string application,
 		string version,
 		IFormFile file
 	) {
 		var uploadPath = Path.Combine(
-			_environment.WebRootPath, "uploads", application, version);
+			_environment.ContentRootPath, "vault", "live", "clients", application, version);
 
 		using var archive = new ZipArchive(file.OpenReadStream(), ZipArchiveMode.Read);
 		foreach (var entry in archive.Entries)
@@ -58,8 +58,8 @@ public class StorageService {
 
 		// Access the entry's name and other properties
 		string entryName = entry.FullName;
-		long entrySize = entry.Length;
-		DateTimeOffset entryLastModified = entry.LastWriteTime;
+		//long entrySize = entry.Length;
+		//DateTimeOffset entryLastModified = entry.LastWriteTime;
 
 		// Construct the destination path for the entry
 		string destinationPath = Path.Combine(extractionPath, entryName);

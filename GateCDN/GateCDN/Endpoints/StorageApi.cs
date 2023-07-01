@@ -8,8 +8,8 @@ namespace GateCDN.Endpoints;
 public static partial class StorageApi {
 
 	public static void UseStorageApi(this WebApplication app) {
-		app.MapPost("api/storage/upload-file", UploadFile);
-		app.MapPost("api/storage/upload-zip", UploadZip);
+		app.MapPost("api/storage/upload-file", UploadClientFile);
+		app.MapPost("api/storage/upload-zip", UploadClientZip);
 	}
 
 	/// <summary>
@@ -17,18 +17,18 @@ public static partial class StorageApi {
 	/// Must be called after all other endpoint registrations.
 	/// </summary>
 	/// <param name="app"></param>
-	public static void UseServeApi(this WebApplication app) {
-		var path = Path.Combine(app.Environment.WebRootPath, "uploads");
+	public static void UseServeClientApi(this WebApplication app) {
+		var path = Path.Combine(app.Environment.ContentRootPath, "vault", "live", "clients");
 
 		var options = new StaticFileOptions {
 			FileProvider = new PhysicalFileProvider(path),
 			RequestPath = "",
 		};
 
-		app.UseMiddleware<FileServeMiddleware>(Options.Create(options));
+		app.UseMiddleware<ServeClientFileMiddleware>(Options.Create(options));
 	}
 
-	public async static Task<IResult> UploadFile(
+	public async static Task<IResult> UploadClientFile(
 		[FromServices] StorageService storage,
 		[FromQuery] string application,
 		[FromQuery] string version,
@@ -36,7 +36,7 @@ public static partial class StorageApi {
 		IFormFile file
 	) {
 		try {
-			await storage.UploadFile(application, version, path, file);
+			await storage.UploadClientFile(application, version, path, file);
 
 			return Results.Ok("File uploaded successfully!");
 		}
@@ -48,14 +48,14 @@ public static partial class StorageApi {
 		}
 	}
 
-	public async static Task<IResult> UploadZip(
+	public async static Task<IResult> UploadClientZip(
 		[FromServices] StorageService storage,
 		[FromQuery] string application,
 		[FromQuery] string version,
 		IFormFile file
 	) {
 		try {
-			await storage.UploadZip(application, version, file);
+			await storage.UploadClientZip(application, version, file);
 
 			return Results.Ok("File uploaded successfully!");
 		}
