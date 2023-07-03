@@ -1,10 +1,11 @@
-import './app-element.js';
+import './app/app-element.js';
 
-import { loadStyles } from './load-styles.js';
+import { SERVER_URL } from './app/constants.js';
+import { loadStyles } from './app/load-styles.js';
 
 
 loadStyles(
-	new URL('root-design/1.0.0', 'https://localhost:7159'),
+	SERVER_URL + '/root-design/1.0.0/',
 	[
 		{ id: 'gate-style-index', href: 'tokens/index.css' },
 		{ id: 'gate-style-tokens-all', href: 'tokens/tokens-all.css' },

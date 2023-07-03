@@ -28,9 +28,10 @@ public static class RouteApi {
 	) => Try(() => routeService.GetAllRoutes());
 
 	public static IResult AddRoute(
-		[FromServices] RouteService routeService
+		[FromServices] RouteService routeService,
+		[FromBody] RouteBase route
 	) => Try(() => {
-		routeService.AddRoute();
+		routeService.AddRoute(route);
 
 		return "Route added successfully.";
 	});

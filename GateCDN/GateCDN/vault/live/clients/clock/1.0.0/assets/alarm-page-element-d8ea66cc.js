@@ -1,0 +1,1 @@
+import{s as v,a as _}from"./index-8df12445.js";var m=Object.defineProperty,o=Object.getOwnPropertyDescriptor,P=(t,r,l,a)=>{for(var e=a>1?void 0:a?o(r,l):r,s=t.length-1,p;s>=0;s--)(p=t[s])&&(e=(a?p(r,l,e):p(e))||e);return a&&e&&m(r,l,e),e};let f=class extends v{};f=P([_("clk-alarm-page")],f);export{f as AlarmPageElement};

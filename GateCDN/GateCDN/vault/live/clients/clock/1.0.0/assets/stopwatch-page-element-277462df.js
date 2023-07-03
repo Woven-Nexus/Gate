@@ -1,0 +1,1 @@
+import{s as c,a as f}from"./index-8df12445.js";var v=Object.defineProperty,_=Object.getOwnPropertyDescriptor,P=(l,r,p,t)=>{for(var e=t>1?void 0:t?_(r,p):r,s=l.length-1,a;s>=0;s--)(a=l[s])&&(e=(t?a(r,p,e):a(e))||e);return t&&e&&v(r,p,e),e};let o=class extends c{};o=P([f("clk-stopwatch-page")],o);export{o as StopwatchPageElement};

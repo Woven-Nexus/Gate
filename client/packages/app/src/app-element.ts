@@ -2,6 +2,8 @@ import { sharedStyles } from '@roenlie/mimic-lit';
 import { css, html, LitElement } from 'lit';
 import { customElement } from 'lit/decorators.js';
 
+import { SERVER_URL } from './constants.js';
+
 
 @customElement('gate-app')
 export class GateAppElement extends LitElement {
@@ -10,7 +12,7 @@ export class GateAppElement extends LitElement {
 		return html`
 		<div class="navbar">nav</div>
 		<div class="content">
-			<iframe src="https://localhost:7159/theta/1.0.0/index.html"></iframe>
+			<iframe src=${ SERVER_URL + '/clock/1.0.0/index.html' }></iframe>
 		</div>
 		<div class="details">details</div>
 		`;
