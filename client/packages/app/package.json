@@ -15,8 +15,18 @@
 	},
 	"author": "Kristoffer Roen-Lie",
 	"license": "MIT",
-	"dependencies": {},
+	"dependencies": {
+		"@roenlie/mimic-core": "^0.0.22",
+		"@roenlie/mimic-elements": "^0.0.7",
+		"@roenlie/mimic-lit": "^0.0.31",
+		"@vaadin/router": "^1.7.5",
+		"lit": "^2.7.5",
+		"reflect-metadata": "^0.1.13",
+		"tslib": "^2.6.0"
+	},
 	"devDependencies": {
-		"vite": "^4.3.1"
+		"@roenlie/package-toolbox": "^0.0.17",
+		"dotenv": "^16.3.1",
+		"vite": "^4.3.9"
 	}
 }

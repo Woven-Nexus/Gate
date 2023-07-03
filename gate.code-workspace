@@ -122,6 +122,7 @@
 				]
 			},
 		],
-		"editor.tabSize": 3
+		"editor.tabSize": 3,
+		"liveServer.settings.multiRootWorkspaceName": "client"
 	}
 }

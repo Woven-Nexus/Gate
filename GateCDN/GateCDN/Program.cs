@@ -1,4 +1,6 @@
+using GateCDN.Database;
 using GateCDN.Endpoints;
+using GateCDN.Features.Routes;
 using GateCDN.Services.Storage;
 using GateCDN.Startup;
 using Microsoft.AspNetCore.Http.Json;
@@ -29,12 +31,20 @@ builder.Services.Configure<JsonOptions>(options => {
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
+// Setup Database
+builder.SetupMongoDB();
+
 // Add storage config
 builder.Services.Configure<StorageConfig>(
 	builder.Configuration.GetSection("StorageConfig"));
 
+builder.Services.Configure<ConnectorConfig>(
+	builder.Configuration.GetSection("ConnectorConfig"));
+
 // Add services
 builder.Services.AddTransient<StorageService>();
+
+builder.UseRoutesFeature();
 
 var app = builder.Build();
 
@@ -51,6 +61,7 @@ app.UseMiddleware<AddCacheHeadersMiddleware>();
 
 // Register custom endpoints
 app.UseInstanceApi();
+app.UseRoutesApi();
 app.UseStorageApi();
 app.UseServeClientApi();
 
