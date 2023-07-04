@@ -84,39 +84,9 @@
 			{
 				"splitTerminals": [
 					{
-						"name": "client_portal",
+						"name": "client_clock",
 						"commands": [
-							"cd ../client/packages/portal",
-						]
-					}
-				]
-			},
-			{
-				"splitTerminals": [
-					{
-						"name": "client_planner",
-						"commands": [
-							"cd ../client/packages/planner",
-						]
-					}
-				]
-			},
-			{
-				"splitTerminals": [
-					{
-						"name": "server_root",
-						"commands": [
-							"cd ../server"
-						]
-					}
-				]
-			},
-			{
-				"splitTerminals": [
-					{
-						"name": "server_app",
-						"commands": [
-							"cd ../server/packages/app",
+							"cd ../client/packages/app-clock",
 						]
 					}
 				]

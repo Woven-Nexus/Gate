@@ -6,11 +6,11 @@ body {
 	-moz-osx-font-smoothing: grayscale;
 	text-rendering: optimizeLegibility;
 
-	font-family: var(--typescale-body-medium-font-family-name);
-	font-weight: var(--typescale-body-medium-font-weight);
-	font-size: var(--typescale-body-medium-font-size);
-	line-height: var(--typescale-body-medium-line-height);
-	letter-spacing: var(--typescale-body-medium-letter-spacing);
+	font-family: var(--body-medium-font-family-name);
+	font-weight: var(--body-medium-font-weight);
+	font-size: var(--body-medium-font-size);
+	line-height: var(--body-medium-line-height);
+	letter-spacing: var(--body-medium-letter-spacing);
 }
 
 body {

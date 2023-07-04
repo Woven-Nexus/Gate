@@ -8,23 +8,8 @@ import { customElement } from 'lit/decorators.js';
 @customElement('clk-timer-page')
 export class TimerPageElement extends LitElement {
 
-	protected override render(): unknown {
+	protected override render() {
 		return html`
-		<clk-timer></clk-timer>
-		<clk-timer></clk-timer>
-		<clk-timer></clk-timer>
-		<clk-timer></clk-timer>
-		<clk-timer></clk-timer>
-		<clk-timer></clk-timer>
-		<clk-timer></clk-timer>
-		<clk-timer></clk-timer>
-		<clk-timer></clk-timer>
-		<clk-timer></clk-timer>
-		<clk-timer></clk-timer>
-		<clk-timer></clk-timer>
-		<clk-timer></clk-timer>
-		<clk-timer></clk-timer>
-		<clk-timer></clk-timer>
 		<clk-timer></clk-timer>
 		`;
 	}

@@ -84,8 +84,8 @@ importers:
         specifier: ^0.0.22
         version: 0.0.22
       '@roenlie/mimic-elements':
-        specifier: ^0.0.8
-        version: 0.0.8
+        specifier: ^0.0.16
+        version: 0.0.16
       '@roenlie/mimic-lit':
         specifier: ^0.0.32
         version: 0.0.32
@@ -834,6 +834,16 @@ packages:
       tslib: 2.6.0
     dev: false
 
+  /@roenlie/mimic-elements@0.0.16:
+    resolution: {integrity: sha512-gy5vRp/R8FSlbpttvhx3V8gNXHvXaI0K8rY6CGEDzJm2UjVE1wHXaOaH3qfro2rIyZKp83QtKxjid/QewaZAbQ==}
+    dependencies:
+      '@floating-ui/dom': 1.4.3
+      '@roenlie/mimic-core': 0.0.22
+      '@roenlie/mimic-lit': 0.0.32
+      lit: 2.7.5
+      tslib: 2.6.0
+    dev: false
+
   /@roenlie/mimic-elements@0.0.6:
     resolution: {integrity: sha512-W+lDyk7YXPue8WFQP0KUMMNuCpP7tXHXsVO7H+ZrhKQjcNy0AquFYq2o7TTNGrTq0tHKpuyHfJhSPaRt9oC7Sw==}
     dependencies:
@@ -850,16 +860,6 @@ packages:
       '@floating-ui/dom': 1.4.3
       '@roenlie/mimic-core': 0.0.20
       '@roenlie/mimic-lit': 0.0.22
-      lit: 2.7.5
-      tslib: 2.6.0
-    dev: false
-
-  /@roenlie/mimic-elements@0.0.8:
-    resolution: {integrity: sha512-bcNv040cg4PQSsLRGSDgrM+pqqKBO5bwfvKi6qn7sPv7lD+TezBJMf6mzHfVcSkwjQyNxHuyRDc/XQcL9eV3DQ==}
-    dependencies:
-      '@floating-ui/dom': 1.4.3
-      '@roenlie/mimic-core': 0.0.22
-      '@roenlie/mimic-lit': 0.0.32
       lit: 2.7.5
       tslib: 2.6.0
     dev: false
