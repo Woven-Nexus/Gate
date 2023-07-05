@@ -1,6 +1,7 @@
 import './sidebar-element.js';
 
-import { provide, sharedStyles } from '@roenlie/mimic-lit';
+import { provide } from '@roenlie/mimic-lit/context';
+import { sharedStyles } from '@roenlie/mimic-lit/styles';
 import { Route, Router } from '@vaadin/router';
 import { css, html, LitElement } from 'lit';
 import { customElement } from 'lit/decorators.js';

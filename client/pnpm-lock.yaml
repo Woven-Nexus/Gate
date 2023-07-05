@@ -81,14 +81,14 @@ importers:
   packages/app-clock:
     dependencies:
       '@roenlie/mimic-core':
-        specifier: ^0.0.22
-        version: 0.0.22
+        specifier: ^0.0.23
+        version: 0.0.23
       '@roenlie/mimic-elements':
-        specifier: ^0.0.16
-        version: 0.0.16
+        specifier: ^0.0.18
+        version: 0.0.18
       '@roenlie/mimic-lit':
-        specifier: ^0.0.32
-        version: 0.0.32
+        specifier: ^0.0.33
+        version: 0.0.33
       '@vaadin/router':
         specifier: ^1.7.5
         version: 1.7.5
@@ -827,6 +827,13 @@ packages:
       tslib: 2.6.0
     dev: false
 
+  /@roenlie/mimic-core@0.0.23:
+    resolution: {integrity: sha512-zha11/JBVueiD8Ho9CbyNBHx87pS2fAcfAQgBvBfHnZq/5VH/+fC3vZA/npa8LjIENysPUdHRzIGix7RhGsCuw==}
+    dependencies:
+      nanoid: 4.0.2
+      tslib: 2.6.0
+    dev: false
+
   /@roenlie/mimic-core@0.0.8:
     resolution: {integrity: sha512-Mb6bYD+J8bOtwltX9XJs/u8P3nks75G4WKiz05qD9RiUF88R+udodBslwTMezGsycTXHAvvqgZ2qT+Rh8kXuFg==}
     dependencies:
@@ -834,12 +841,12 @@ packages:
       tslib: 2.6.0
     dev: false
 
-  /@roenlie/mimic-elements@0.0.16:
-    resolution: {integrity: sha512-gy5vRp/R8FSlbpttvhx3V8gNXHvXaI0K8rY6CGEDzJm2UjVE1wHXaOaH3qfro2rIyZKp83QtKxjid/QewaZAbQ==}
+  /@roenlie/mimic-elements@0.0.18:
+    resolution: {integrity: sha512-2jOYkCD5vOrQILagscVS4IwU7swdJNcP3UftjhsLgFV2yaNL7s29HPC0D313+KzkiLGdkfJhd0lypvpv0oQf3Q==}
     dependencies:
       '@floating-ui/dom': 1.4.3
-      '@roenlie/mimic-core': 0.0.22
-      '@roenlie/mimic-lit': 0.0.32
+      '@roenlie/mimic-core': 0.0.23
+      '@roenlie/mimic-lit': 0.0.33
       lit: 2.7.5
       tslib: 2.6.0
     dev: false
@@ -900,10 +907,10 @@ packages:
       tslib: 2.6.0
     dev: false
 
-  /@roenlie/mimic-lit@0.0.32:
-    resolution: {integrity: sha512-pQKdsF6wqksoWzxwU/rq2xnaCdt2zP9v5Lu3X/kfTPze1I7q/z28pQMN9IUWXy2JM0voOQtRWvr7l2iNymmn3A==}
+  /@roenlie/mimic-lit@0.0.33:
+    resolution: {integrity: sha512-XsFIoGH9L6GaG9HgXLMsuEdiPSso5mzjJc/VUCtBqgYQ3voZpMG/iSYpv0PS3L951aHGBwHZy4i+PJSKjcb3Jg==}
     dependencies:
-      '@roenlie/mimic-core': 0.0.22
+      '@roenlie/mimic-core': 0.0.23
       fast-equals: 5.0.1
       inversify: 6.0.1
       lit: 2.7.5

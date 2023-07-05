@@ -2,7 +2,7 @@ import '@roenlie/mimic-elements/icon';
 import '@roenlie/mimic-elements/text';
 import '@roenlie/mimic-elements/ripple';
 
-import { sharedStyles } from '@roenlie/mimic-lit';
+import { sharedStyles } from '@roenlie/mimic-lit/styles';
 import { css, html, LitElement } from 'lit';
 import { customElement, property } from 'lit/decorators.js';
 import { map } from 'lit/directives/map.js';

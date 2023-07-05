@@ -13,12 +13,12 @@
 		"preview": "vite preview",
 		"build": "vite build",
 		"updatedeps": "pnpm update --latest --interactive",
-		"typecheck": "tsc --project ./src/tsconfig.json"
+		"typecheck": "tsc --project ./tsconfig.json"
 	},
 	"dependencies": {
-		"@roenlie/mimic-core": "^0.0.22",
-		"@roenlie/mimic-elements": "^0.0.16",
-		"@roenlie/mimic-lit": "^0.0.32",
+		"@roenlie/mimic-core": "^0.0.23",
+		"@roenlie/mimic-elements": "^0.0.18",
+		"@roenlie/mimic-lit": "^0.0.33",
 		"@vaadin/router": "^1.7.5",
 		"lit": "^2.7.5",
 		"tslib": "^2.6.0"
