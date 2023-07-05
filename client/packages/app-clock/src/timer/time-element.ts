@@ -14,6 +14,10 @@ import { classMap } from 'lit/directives/class-map.js';
 import { map } from 'lit/directives/map.js';
 import { when } from 'lit/directives/when.js';
 
+import { askForNotificationPermissions, notification } from '../utilities/notification.js';
+
+askForNotificationPermissions();
+
 
 declare global {
 	interface HTMLElementTagNameMap {
@@ -60,6 +64,16 @@ export class TimerElement extends LitElement {
 		this.editDialog();
 	}
 
+	protected getTime(timeString: typeof this.time) {
+		const [ hours, minutes, seconds ] = timeString
+			.split(':').map(t => parseInt(t));
+
+		return parseInt(
+			new Date(0, 0, 0, hours, minutes, seconds).toTimeString()
+				.split(' ').at(0)!.replaceAll(':', '')!,
+		);
+	}
+
 	protected handleToggleClick(ev: Event) {
 		ev.preventDefault();
 		ev.stopPropagation();
@@ -69,39 +83,44 @@ export class TimerElement extends LitElement {
 			this.cancelCountdown = undefined;
 		}
 		else {
-			this.cancelCountdown = accurateTimer(() => {
-				const [ hours, minutes, seconds ] = this.currentTime
-					.split(':').map(t => parseInt(t));
+			if (this.getTime(this.time) === 0)
+				return;
+			if (this.getTime(this.currentTime) === 0)
+				this.currentTime = this.time;
 
-				const date = new Date(0, 0, 0);
-				date.setHours(hours!);
-				date.setMinutes(minutes!);
-				date.setSeconds(seconds!);
-
-				const newTime = date.getTime() - 1000;
-				date.setTime(newTime);
-
-				const time = parseInt(
-					date.toTimeString()
-						.split(' ').at(0)!.replaceAll(':', '')!,
-				);
-
-				if (time === 0) {
-					this.currentTime = date.toTimeString().split(' ').at(0)!;
-
-					this.cancelCountdown?.();
-					this.cancelCountdown = undefined;
-					this.requestUpdate();
-
-					return;
-				}
-
-				this.currentTime = date.toTimeString().split(' ').at(0)!;
-			}).cancel;
+			this.cancelCountdown = accurateTimer(this.timerFn).cancel;
 		}
 
 		this.requestUpdate();
 	}
+
+	protected timerFn = () => {
+		const [ hours, minutes, seconds ] = this.currentTime
+			.split(':').map(t => parseInt(t));
+
+		const date = new Date(0, 0, 0, hours, minutes, seconds);
+		const newTime = date.getTime() - 1000;
+		date.setTime(newTime);
+
+		const time = parseInt(
+			date.toTimeString()
+				.split(' ').at(0)!.replaceAll(':', '')!,
+		);
+
+		if (time === 0) {
+			this.currentTime = date.toTimeString().split(' ').at(0)!;
+
+			this.cancelCountdown?.();
+			this.cancelCountdown = undefined;
+			this.requestUpdate();
+
+			notification('Timer Complete!', this.label);
+
+			return;
+		}
+
+		this.currentTime = date.toTimeString().split(' ').at(0)!;
+	};
 
 	protected handleResetClick(ev: Event) {
 		ev.preventDefault();

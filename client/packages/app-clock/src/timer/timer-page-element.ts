@@ -24,10 +24,6 @@ export class TimerPageElement extends LitElement {
 
 	protected timers: Timer[] = JSON.parse(localStorage.getItem('clk-timers') ?? '[]');
 
-	public override connectedCallback() {
-		super.connectedCallback();
-	}
-
 	@listen('update') protected handleUpdate(ev: CustomEvent) {
 		const target = ev.composedPath().at(0) as TimerElement;
 
