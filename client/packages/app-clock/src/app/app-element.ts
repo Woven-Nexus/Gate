@@ -92,6 +92,7 @@ export class ClockAppElement extends LitElement {
 		aside {
 			display: grid;
 			background-color: rgba(20,20,20,0.5);
+			border-right: 1px solid rgb(200 200 200 / 25%);
 		}
 		section {
 			overflow: auto;

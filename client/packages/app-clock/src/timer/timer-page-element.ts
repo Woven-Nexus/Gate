@@ -2,6 +2,7 @@ import './time-element.js';
 import '@roenlie/mimic-elements/button';
 import '@roenlie/mimic-elements/icon';
 
+import { swapItems } from '@roenlie/mimic-core/array';
 import { domId, EventOf } from '@roenlie/mimic-core/dom';
 import { listen } from '@roenlie/mimic-lit/decorators';
 import { sharedStyles } from '@roenlie/mimic-lit/styles';
@@ -9,7 +10,6 @@ import { css, html, LitElement } from 'lit';
 import { customElement } from 'lit/decorators.js';
 import { map } from 'lit/directives/map.js';
 
-import { swapItems } from '../utilities/swap-items.js';
 import type { TimeFieldElement, TimerElement } from './time-element.js';
 
 

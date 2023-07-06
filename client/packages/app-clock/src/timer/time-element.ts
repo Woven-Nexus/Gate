@@ -3,7 +3,7 @@ import '@roenlie/mimic-elements/icon';
 import '@roenlie/mimic-elements/dialog';
 import '@roenlie/mimic-elements/input';
 
-import { emitEvent, EventOf } from '@roenlie/mimic-core/dom';
+import { askForNotificationPermissions, emitEvent, EventOf, notification } from '@roenlie/mimic-core/dom';
 import { accurateTimer, curryDebounce } from '@roenlie/mimic-core/timing';
 import { StringLiteral } from '@roenlie/mimic-core/types';
 import { KeyboardController } from '@roenlie/mimic-lit/controllers';
@@ -12,9 +12,8 @@ import { css, html, LitElement, PropertyValueMap, PropertyValues } from 'lit';
 import { customElement, property, query, state } from 'lit/decorators.js';
 import { classMap } from 'lit/directives/class-map.js';
 import { map } from 'lit/directives/map.js';
+import { styleMap } from 'lit/directives/style-map.js';
 import { when } from 'lit/directives/when.js';
-
-import { askForNotificationPermissions, notification } from '../utilities/notification.js';
 
 askForNotificationPermissions();
 
@@ -51,6 +50,11 @@ export class TimerElement extends LitElement {
 		const percentage = ((b - a) / (c - a)) * 100;
 
 		return isNaN(percentage) ? 100 : percentage;
+	}
+
+	public override disconnectedCallback() {
+		super.disconnectedCallback();
+		this.cancelCountdown?.();
 	}
 
 	protected override willUpdate(props: PropertyValues) {
@@ -317,6 +321,7 @@ export class TimerElement extends LitElement {
 		<div class="footer">
 			<mm-button type="icon" size="small" @click=${ this.handleToggleClick }>
 				<mm-icon
+					style=${ styleMap({ translate: this.cancelCountdown ? '' : '2px' }) }
 					url=${ this.cancelCountdown
 						? 'https://icons.getbootstrap.com/assets/icons/pause-fill.svg'
 						: 'https://icons.getbootstrap.com/assets/icons/play-fill.svg' }
