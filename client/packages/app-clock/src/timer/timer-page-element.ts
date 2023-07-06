@@ -9,6 +9,7 @@ import { css, html, LitElement } from 'lit';
 import { customElement } from 'lit/decorators.js';
 import { map } from 'lit/directives/map.js';
 
+import { swapItems } from '../utilities/swap-items.js';
 import type { TimeFieldElement, TimerElement } from './time-element.js';
 
 
@@ -32,7 +33,7 @@ export class TimerPageElement extends LitElement {
 			timer.label = target.label;
 			timer.time = target.time;
 
-			localStorage.setItem('clk-timers', JSON.stringify(this.timers));
+			this.updateLocalStorage();
 		}
 	}
 
@@ -43,10 +44,14 @@ export class TimerPageElement extends LitElement {
 		if (timer) {
 			const indexToRemove = this.timers.indexOf(timer);
 			this.timers.splice(indexToRemove, 1);
-			localStorage.setItem('clk-timers', JSON.stringify(this.timers));
+			this.updateLocalStorage();
 
 			this.requestUpdate();
 		}
+	}
+
+	protected updateLocalStorage() {
+		localStorage.setItem('clk-timers', JSON.stringify(this.timers));
 	}
 
 	protected newDialog() {
@@ -60,7 +65,7 @@ export class TimerPageElement extends LitElement {
 			save: () => {
 				const timer = { id: domId(), label: state.label, time: state.time };
 				this.timers.push(timer);
-				localStorage.setItem('clk-timers', JSON.stringify(this.timers));
+				this.updateLocalStorage();
 
 				this.requestUpdate();
 
@@ -81,7 +86,7 @@ export class TimerPageElement extends LitElement {
 						@change=${ (ev: EventOf<TimeFieldElement>) => state.time = ev.target.value }
 					></clk-time-field>
 					<mm-icon
-						style="grid-area: icon;"
+						style="grid-area: icon;font-size:18px;"
 						url="https://icons.getbootstrap.com/assets/icons/pencil-square.svg"
 					></mm-icon>
 					<mm-input
@@ -170,6 +175,25 @@ export class TimerPageElement extends LitElement {
 				id   =${ timer.id }
 				label=${ timer.label }
 				time =${ timer.time }
+				draggable="true"
+				@dragstart=${ (ev: DragEvent) => {
+					ev.dataTransfer!.effectAllowed = 'move';
+					ev.dataTransfer?.setData('clock-id', timer.id);
+				} }
+				@dragenter=${ (ev: DragEvent) => ev.preventDefault() }
+				@dragover=${ (ev: DragEvent) => ev.preventDefault() }
+				@drop=${ (ev: DragEvent) => {
+					const dropId = ev.dataTransfer!.getData('clock-id');
+					if (dropId !== timer.id) {
+						const fromIndex = this.timers.findIndex(t => t.id === dropId);
+						const toIndex = this.timers.findIndex(t => t.id === timer.id);
+
+						swapItems(this.timers, fromIndex, toIndex);
+						this.updateLocalStorage();
+
+						this.requestUpdate();
+					}
+				} }
 			></clk-timer>
 		`) }
 

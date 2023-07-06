@@ -186,7 +186,7 @@ export class TimerElement extends LitElement {
 						@change=${ (ev: EventOf<TimeFieldElement>) => state.time = ev.target.value }
 					></clk-time-field>
 					<mm-icon
-						style="grid-area: icon;"
+						style="grid-area: icon;font-size:18px;"
 						url="https://icons.getbootstrap.com/assets/icons/pencil-square.svg"
 					></mm-icon>
 					<mm-input
@@ -388,8 +388,7 @@ export class TimerElement extends LitElement {
 			padding: 8px;
 			padding-bottom: 12px;
 			transition:
-				scale 0.2s ease,
-				translate 0.1s ease,
+				translate 0.2s ease,
 				box-shadow 0.2s ease;
 		}
 		.container:not(.fullscreen) {
@@ -398,9 +397,6 @@ export class TimerElement extends LitElement {
 		.container:not(.fullscreen):hover {
 			box-shadow: var(--box-shadow-m);
 			translate: 0px -2px;
-			scale: 101%;
-		}
-		.container.fullscreen {
 		}
 		.header {
 			display: grid;
@@ -435,7 +431,6 @@ export class TimerElement extends LitElement {
 			align-items: center;
 			justify-content: center;
 			gap: 12px;
-			/*padding-top: 18px;*/
 		}
 		`,
 	];
@@ -625,7 +620,7 @@ export class TimeFieldElement extends LitElement {
 			};
 
 			if (this.activeIndex === 0)
-				mutateTime();
+				mutateTime(23);
 			else if (this.activeIndex === 1)
 				mutateTime(59);
 			else if (this.activeIndex === 2)
@@ -654,7 +649,7 @@ export class TimeFieldElement extends LitElement {
 	protected incrementTime(index: number) {
 		if (index === 0) {
 			this.time[index] = this.time[index] + 1;
-			if (this.time[index] > 99)
+			if (this.time[index] >= 24)
 				this.time[index] = 0;
 		}
 		else if (index === 1) {
@@ -676,7 +671,7 @@ export class TimeFieldElement extends LitElement {
 		if (index === 0) {
 			this.time[index] = this.time[index] - 1;
 			if (this.time[index] < 0)
-				this.time[index] = 99;
+				this.time[index] = 23;
 		}
 		else if (index === 1) {
 			this.time[index] = this.time[index] - 1;
