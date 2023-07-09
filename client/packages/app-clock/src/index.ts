@@ -5,7 +5,7 @@ import { loadStyles } from './app/load-styles.js';
 
 
 loadStyles(
-	SERVER_URL + '/root-design/1.0.0/',
+	SERVER_URL + '/serve/root-design/1.0.0/',
 	[
 		{ id: 'gate-style-index', href: 'tokens/index.css' },
 		{ id: 'gate-style-tokens-all', href: 'tokens/tokens-all.css' },

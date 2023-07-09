@@ -25,7 +25,7 @@ public static partial class StorageApi {
 
 		var options = new StaticFileOptions {
 			FileProvider = new PhysicalFileProvider(path),
-			RequestPath = "",
+			RequestPath = "/serve",
 		};
 
 		app.UseMiddleware<ServeClientFileMiddleware>(Options.Create(options));

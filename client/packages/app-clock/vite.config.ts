@@ -3,10 +3,10 @@ import { defineConfig } from 'vite';
 
 export default defineConfig(() => {
 	return {
-		base:   '/clock/1.0.0/',
+		base:   '/serve/clock/1.0.0/',
 		define: {
 			__APP_VERSION: JSON.stringify('1.0.0'),
-			__APP_BASE:    JSON.stringify('/clock/1.0.0/'),
+			__APP_BASE:    JSON.stringify('/serve/clock/1.0.0/'),
 		},
 	};
 });
