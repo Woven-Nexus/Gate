@@ -7,13 +7,7 @@
     <UserSecretsId>5f45e846-49bf-417d-af23-815393f83c7f</UserSecretsId>
   </PropertyGroup>
 
-	<!-- Copies the Swagger dark theme to the build output -->
-	<ItemGroup>
-		<None Include="wwwroot\swagger\SwaggerDark.css">
-			<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-		</None>
-	</ItemGroup>
-
+	<!-- Project dependencies -->
   <ItemGroup>
     <PackageReference Include="dotenv.net" Version="3.1.2" />
     <PackageReference Include="Microsoft.AspNetCore.OpenApi" Version="7.0.8" />
@@ -22,10 +16,21 @@
     <PackageReference Include="Serilog.AspNetCore" Version="7.0.0" />
     <PackageReference Include="Swashbuckle.AspNetCore" Version="6.5.0" />
   </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="vault\live\clients\" />
-    <Folder Include="vault\live\servers\" />
-  </ItemGroup>
+	
+	
+	<ItemGroup>
+		<!-- Copies the Swagger dark theme to the build output -->
+		<None Include="wwwroot\swagger\SwaggerDark.css">
+			<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+		</None>
+		<!-- Copies client apps to the build output -->
+		<None Include="vault\live\clients\**\*.*">
+			<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+		</None>
+		<!-- Copies server apps to the build output -->
+		<None Include="vault\live\servers\**\*.*">
+			<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+		</None>
+	</ItemGroup>
 
 </Project>

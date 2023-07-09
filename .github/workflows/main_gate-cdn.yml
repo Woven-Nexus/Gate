@@ -9,6 +9,7 @@ on:
       - main
     paths:
       - GateCDN//**
+
   # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
 
@@ -17,7 +18,7 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v3
 
       - name: Set up .NET Core
         uses: actions/setup-dotnet@v1
@@ -25,8 +26,30 @@ jobs:
           dotnet-version: "7.x"
           include-prerelease: true
 
-      - name: Move to the correct directory
-        run: cd GateCDN
+      - name: Setup Node
+        uses: actions/setup-node@v3
+        with:
+          node-version: 19.3.0
+          registry-url: https://registry.npmjs.org/
+
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v2.2.4
+        with:
+          version: latest
+
+      - name: Install dependencies.
+        run: |
+           cd client
+           pnpm install
+
+      - name: Build front end.
+        run: |
+           cd client/packages/app
+           pnpm build
+
+      - name: Move output.
+        run: |
+           mv -v /client/packages/app/dist/* /GateCDN/GateCDN/wwwroot/
 
       - name: Build with dotnet
         run: |
