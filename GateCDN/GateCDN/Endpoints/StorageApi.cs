@@ -20,6 +20,9 @@ public static partial class StorageApi {
 	public static void UseServeClientApi(this WebApplication app) {
 		var path = Path.Combine(app.Environment.ContentRootPath, "vault", "live", "clients");
 
+		// Create the directory if it doesn't exist (including nested directories)
+		Directory.CreateDirectory(path);
+
 		var options = new StaticFileOptions {
 			FileProvider = new PhysicalFileProvider(path),
 			RequestPath = "",
