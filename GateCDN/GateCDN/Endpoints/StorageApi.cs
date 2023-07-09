@@ -18,17 +18,26 @@ public static partial class StorageApi {
 	/// </summary>
 	/// <param name="app"></param>
 	public static void UseServeClientApi(this WebApplication app) {
-		var path = Path.Combine(app.Environment.ContentRootPath, "vault", "live", "clients");
+
+		// Sets the default fallback if nothing matches the requested url.
+		app.MapFallback(async (context) => {
+			var portalPath = Path.Combine(app.Environment.ContentRootPath, "wwwroot", "index.html");
+			await context.Response.SendFileAsync(portalPath);
+		});
 
 		// Create the directory if it doesn't exist (including nested directories)
+		var path = Path.Combine(app.Environment.ContentRootPath, "vault", "live", "clients");
 		Directory.CreateDirectory(path);
 
-		var options = new StaticFileOptions {
+		app.UseMiddleware<ServeClientFileMiddleware>(Options.Create(new StaticFileOptions {
 			FileProvider = new PhysicalFileProvider(path),
 			RequestPath = "/serve",
-		};
+		}));
 
-		app.UseMiddleware<ServeClientFileMiddleware>(Options.Create(options));
+		app.UseMiddleware<ServeClientFileMiddleware>(Options.Create(new StaticFileOptions {
+			FileProvider = new PhysicalFileProvider(Path.Combine(app.Environment.ContentRootPath, "wwwroot")),
+			RequestPath = "",
+		}));
 	}
 
 	public async static Task<IResult> UploadClientFile(

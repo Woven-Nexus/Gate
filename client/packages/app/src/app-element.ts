@@ -12,7 +12,7 @@ export class GateAppElement extends LitElement {
 		return html`
 		<div class="navbar">nav</div>
 		<div class="content">
-			<iframe src=${ SERVER_URL + '/clock/1.0.0/index.html' }></iframe>
+			<iframe src=${ SERVER_URL + '/serve/clock/1.0.0/index.html' }></iframe>
 		</div>
 		<div class="details">details</div>
 		`;
