@@ -4,6 +4,7 @@
     <TargetFramework>net7.0</TargetFramework>
     <Nullable>enable</Nullable>
     <ImplicitUsings>enable</ImplicitUsings>
+    <UserSecretsId>5f45e846-49bf-417d-af23-815393f83c7f</UserSecretsId>
   </PropertyGroup>
 
 	<!-- Copies the Swagger dark theme to the build output -->
@@ -14,6 +15,7 @@
 	</ItemGroup>
 
   <ItemGroup>
+    <PackageReference Include="dotenv.net" Version="3.1.2" />
     <PackageReference Include="Microsoft.AspNetCore.OpenApi" Version="7.0.8" />
     <PackageReference Include="MongoDB.Driver" Version="2.20.0" />
     <PackageReference Include="NuGet.Versioning" Version="6.6.1" />

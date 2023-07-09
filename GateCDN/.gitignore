@@ -1,5 +1,9 @@
 # Ignore uploaded files to the CDN folder.
-**/*/wwwroot/uploads
+**/*/vault/clients
+**/*/vault/servers
+
+# Ignore development .env file.
+.env.development
 
 
 ## Ignore Visual Studio temporary files, build results, and

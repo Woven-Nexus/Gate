@@ -1,3 +1,4 @@
+using dotenv.net;
 using GateCDN.Database;
 using GateCDN.Endpoints;
 using GateCDN.Features.Routes;
@@ -9,6 +10,13 @@ using System.Text.Json;
 using System.Text.Json.Serialization;
 
 var builder = WebApplication.CreateBuilder(args);
+
+// Load environment variables from .env files.
+DotEnv.Load(options: new DotEnvOptions(envFilePaths: new[] {
+	"./.env",
+	"./.env.development",
+	"./.env.production"
+}));
 
 // Add Serilog
 builder.Host.UseSerilog((_, config) => {
