@@ -49,7 +49,7 @@ jobs:
 
       - name: Move output.
         run: |
-           mv -v /client/packages/app/dist/* /GateCDN/GateCDN/wwwroot/
+           mv -v client/packages/app/dist/* GateCDN/GateCDN/wwwroot/
 
       - name: Build with dotnet
         run: |
