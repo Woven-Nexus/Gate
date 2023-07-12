@@ -8,11 +8,15 @@ import { SERVER_URL } from './constants.js';
 @customElement('gate-app')
 export class GateAppElement extends LitElement {
 
+	public override connectedCallback(): void {
+		super.connectedCallback();
+	}
+
 	protected override render(): unknown {
 		return html`
 		<div class="navbar">nav</div>
 		<div class="content">
-			<iframe src=${ SERVER_URL + '/serve/clock/1.0.0/index.html' }></iframe>
+			<iframe src=${ SERVER_URL + '/apps/clock/1.0.0/timer' }></iframe>
 		</div>
 		<div class="details">details</div>
 		`;

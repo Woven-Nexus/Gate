@@ -1,19 +1,20 @@
-﻿using Microsoft.AspNetCore.StaticFiles;
+﻿using GateCDN.Features.Storage;
 using Microsoft.Extensions.Options;
+
 
 namespace GateCDN.Services.Storage;
 
 public class ServeClientFileMiddleware {
 
-	private readonly Lazy<StaticFileMiddleware> staticFileMiddleware;
+	private readonly Lazy<GateStaticFileMiddleware> staticFileMiddleware;
 
 	public ServeClientFileMiddleware(
 		RequestDelegate next,
 		IWebHostEnvironment hostingEnv,
-		IOptions<StaticFileOptions> options,
+		IOptions<GateStaticFileOptions> options,
 		ILoggerFactory loggerFactory
 	) {
-		staticFileMiddleware = new(new StaticFileMiddleware(
+		staticFileMiddleware = new(new GateStaticFileMiddleware(
 			next, hostingEnv, options, loggerFactory));
 	}
 
@@ -25,3 +26,4 @@ public class ServeClientFileMiddleware {
 	}
 
 }
+

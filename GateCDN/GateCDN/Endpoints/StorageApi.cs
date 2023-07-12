@@ -1,4 +1,5 @@
-﻿using GateCDN.Services.Storage;
+﻿using GateCDN.Features.Storage;
+using GateCDN.Services.Storage;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.FileProviders;
 using Microsoft.Extensions.Options;
@@ -29,12 +30,17 @@ public static partial class StorageApi {
 		var path = Path.Combine(app.Environment.ContentRootPath, "vault", "live", "clients");
 		Directory.CreateDirectory(path);
 
-		app.UseMiddleware<ServeClientFileMiddleware>(Options.Create(new StaticFileOptions {
+		app.UseMiddleware<GateStaticFileMiddleware>(Options.Create(new GateStaticFileOptions {
+			FileProvider = new PhysicalFileProvider(path),
+			RequestPath = "/apps",
+		}));
+
+		app.UseMiddleware<GateStaticFileMiddleware>(Options.Create(new GateStaticFileOptions {
 			FileProvider = new PhysicalFileProvider(path),
 			RequestPath = "/serve",
 		}));
 
-		app.UseMiddleware<ServeClientFileMiddleware>(Options.Create(new StaticFileOptions {
+		app.UseMiddleware<GateStaticFileMiddleware>(Options.Create(new GateStaticFileOptions {
 			FileProvider = new PhysicalFileProvider(Path.Combine(app.Environment.ContentRootPath, "wwwroot")),
 			RequestPath = "",
 		}));
@@ -77,6 +83,38 @@ public static partial class StorageApi {
 				statusCode: StatusCodes.Status500InternalServerError
 			);
 		}
+	}
+
+}
+
+
+public class StaticFileServeFallback {
+
+	private readonly RequestDelegate _next;
+	private readonly Lazy<GateStaticFileMiddleware> staticFileMiddleware;
+
+	public StaticFileServeFallback(
+		RequestDelegate next,
+		IWebHostEnvironment hostingEnv,
+		IOptions<GateStaticFileOptions> options,
+		ILoggerFactory loggerFactory
+	) {
+		_next = next;
+		staticFileMiddleware = new(new GateStaticFileMiddleware(
+			next, hostingEnv, options, loggerFactory));
+	}
+
+	public Task Invoke(HttpContext context) {
+		if (context.Request.Path.StartsWithSegments("/apps")) {
+			var mutatedPath = context.Request.Path.ToString().Trim('/').Split('/');
+			var newPath = '/' + string.Join('/',mutatedPath.Take(3).ToArray()) + "/index.html";
+
+			context.Request.Path = newPath;
+
+			return staticFileMiddleware.Value.Invoke(context);
+		}
+
+		return _next(context);
 	}
 
 }
