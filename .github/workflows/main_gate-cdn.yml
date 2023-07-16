@@ -53,7 +53,7 @@ jobs:
 
       - name: Build with dotnet
         run: |
-          cd GateCDN
+          cd server
           dotnet build --configuration Release
 
       - name: dotnet publish
