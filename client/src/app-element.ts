@@ -1,8 +1,12 @@
-import { sharedStyles } from '@roenlie/mimic-lit';
+import { includeCE } from '@roenlie/mimic-lit/injectable';
+import { sharedStyles } from '@roenlie/mimic-lit/styles';
 import { css, html, LitElement } from 'lit';
 import { customElement } from 'lit/decorators.js';
 
 import { SERVER_URL } from './constants.js';
+import { GateNavElement } from './nav-element.js';
+
+includeCE(GateNavElement);
 
 
 @customElement('gate-app')
@@ -14,11 +18,14 @@ export class GateAppElement extends LitElement {
 
 	protected override render(): unknown {
 		return html`
-		<div class="navbar">nav</div>
+		<div class="navbar">
+			<gate-nav></gate-nav>
+		</div>
+
 		<div class="content">
 			<iframe src=${ SERVER_URL + '/apps/clock/1.0.0/timer' }></iframe>
 		</div>
-		<div class="details">details</div>
+		<div class="details"></div>
 		`;
 	}
 
@@ -28,6 +35,11 @@ export class GateAppElement extends LitElement {
 		:host {
 			display: grid;
 			grid-template-columns: 80px 1fr auto;
+		}
+		.navbar {
+			display: grid;
+			padding-block: 12px;
+			border-right: 1px solid rgb(150 150 150 / 30%);
 		}
 		.content {
 			display: grid;
