@@ -58,7 +58,7 @@ jobs:
 
       - name: dotnet publish
         run: |
-          cd GateCDN
+          cd server
           dotnet publish -c Release -o ${{env.DOTNET_ROOT}}/myapp
 
       - name: Upload artifact for deployment job
