@@ -7,6 +7,10 @@ on:
   push:
     branches:
       - main
+    paths:
+      - GateCDN//**
+
+  # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
 
 jobs:
@@ -14,19 +18,48 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v3
 
       - name: Set up .NET Core
         uses: actions/setup-dotnet@v1
         with:
-          dotnet-version: '7.x'
+          dotnet-version: "7.x"
           include-prerelease: true
 
+      - name: Setup Node
+        uses: actions/setup-node@v3
+        with:
+          node-version: 19.3.0
+          registry-url: https://registry.npmjs.org/
+
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v2.2.4
+        with:
+          version: latest
+
+      - name: Install dependencies.
+        run: |
+           cd client
+           pnpm install
+
+      - name: Build front end.
+        run: |
+           cd client/packages/app
+           pnpm build
+
+      - name: Move output.
+        run: |
+           mv -v client/packages/app/dist/* GateCDN/GateCDN/wwwroot/
+
       - name: Build with dotnet
-        run: dotnet build --configuration Release
+        run: |
+          cd GateCDN
+          dotnet build --configuration Release
 
       - name: dotnet publish
-        run: dotnet publish -c Release -o ${{env.DOTNET_ROOT}}/myapp
+        run: |
+          cd GateCDN
+          dotnet publish -c Release -o ${{env.DOTNET_ROOT}}/myapp
 
       - name: Upload artifact for deployment job
         uses: actions/upload-artifact@v2
@@ -38,7 +71,7 @@ jobs:
     runs-on: ubuntu-latest
     needs: build
     environment:
-      name: 'Production'
+      name: "Production"
       url: ${{ steps.deploy-to-webapp.outputs.webapp-url }}
 
     steps:
@@ -51,7 +84,7 @@ jobs:
         id: deploy-to-webapp
         uses: azure/webapps-deploy@v2
         with:
-          app-name: 'gate-cdn'
-          slot-name: 'Production'
+          app-name: "gate-cdn"
+          slot-name: "Production"
           publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_9A4EF49B7A604FA7BDF1998C7230DFD1 }}
           package: .
