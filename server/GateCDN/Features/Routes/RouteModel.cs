@@ -4,7 +4,8 @@ using MongoDB.Bson.Serialization.Attributes;
 namespace GateCDN.Features.Routes;
 
 
-public record RouteBase {
+public abstract record RouteBase<TId> {
+	public abstract TId Id { get; init; }
 	public required string Label { get; set; }
 	public required string Path { get; set; }
 
@@ -16,10 +17,10 @@ public record RouteBase {
 
 
 [BsonIgnoreExtraElements]
-public record RouteModel : RouteBase {
+public record RouteModel : RouteBase<ObjectId> {
 
 	[BsonId, BsonIgnoreIfDefault, BsonRepresentation(BsonType.ObjectId)]
-	public ObjectId Id { get; init; }
+	public override ObjectId Id { get; init; }
 
 	public RouteDTO ToDTO() => new() {
 		Id = Id.ToString(),
@@ -30,8 +31,8 @@ public record RouteModel : RouteBase {
 }
 
 
-public record RouteDTO : RouteBase {
-	public required string Id { get; init; }
+public record RouteDTO : RouteBase<string> {
+	public override required string Id { get; init; }
 
 	public override RouteModel ToModel() => new() {
 		Id = ObjectId.Parse(Id),

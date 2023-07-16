@@ -2,19 +2,17 @@
 using Microsoft.Extensions.Options;
 using System.IO.Compression;
 
-namespace GateCDN.Services.Storage;
+namespace GateCDN.Features.Storage;
 
 public class StorageService {
 
 	private readonly IWebHostEnvironment _environment;
-	private readonly StorageConfig _config;
 
 	public StorageService(
 		IWebHostEnvironment environment,
 		IOptions<StorageConfig> config
 	) {
 		_environment = environment;
-		_config = config.Value;
 	}
 
 	public async Task UploadClientFile(
@@ -72,9 +70,8 @@ public class StorageService {
 
 		// Ensure the parent directory exists
 		string parentDirectory = Path.GetDirectoryName(destinationPath)!;
-		if (!string.IsNullOrEmpty(parentDirectory)) {
+		if (!string.IsNullOrEmpty(parentDirectory))
 			Directory.CreateDirectory(parentDirectory);
-		}
 
 		// Extract the entry to the destination path
 		using var stream = entry.Open();

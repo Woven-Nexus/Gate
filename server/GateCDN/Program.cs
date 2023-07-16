@@ -1,8 +1,8 @@
 using dotenv.net;
 using GateCDN.Database;
-using GateCDN.Endpoints;
+using GateCDN.Features.Instance;
 using GateCDN.Features.Routes;
-using GateCDN.Services.Storage;
+using GateCDN.Features.Storage;
 using GateCDN.Startup;
 using Microsoft.AspNetCore.Http.Json;
 using Serilog;

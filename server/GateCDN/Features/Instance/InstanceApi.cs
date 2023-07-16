@@ -1,6 +1,6 @@
 ﻿using System.Diagnostics;
 
-namespace GateCDN.Endpoints;
+namespace GateCDN.Features.Instance;
 
 public static class InstanceApi {
 
@@ -15,7 +15,7 @@ public static class InstanceApi {
 				"--urls http://localhost:2269;https://localhost:2270"
 			);
 
-			return Results.Ok("File uploaded successfully!");
+			return Results.Ok("Success!");
 		}
 		catch (Exception ex) {
 			return Results.Json(
