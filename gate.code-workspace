@@ -1,6 +1,9 @@
 {
 	"folders": [
 		{
+			"path": "./.github"
+		},
+		{
 			"path": "./client"
 		},
 		{
@@ -64,29 +67,9 @@
 			{
 				"splitTerminals": [
 					{
-						"name": "client_root",
+						"name": "app",
 						"commands": [
 							"cd ../client"
-						]
-					}
-				]
-			},
-			{
-				"splitTerminals": [
-					{
-						"name": "client_app",
-						"commands": [
-							"cd ../client/packages/app",
-						]
-					}
-				]
-			},
-			{
-				"splitTerminals": [
-					{
-						"name": "client_clock",
-						"commands": [
-							"cd ../client/packages/app-clock",
 						]
 					}
 				]

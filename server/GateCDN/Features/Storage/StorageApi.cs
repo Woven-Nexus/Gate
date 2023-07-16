@@ -18,7 +18,6 @@ public static partial class StorageApi {
 	/// </summary>
 	/// <param name="app"></param>
 	public static void UseServeClientApi(this WebApplication app) {
-
 		// Sets the default fallback if nothing matches the requested url.
 		app.MapFallback(async (context) => {
 			var portalPath = Path.Combine(app.Environment.ContentRootPath, "wwwroot", "index.html");

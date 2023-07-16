@@ -1,14 +1,31 @@
 {
+	"name": "@roenlie/gate",
+	"version": "0.0.1",
+	"author": "Kristoffer Roen-Lie",
+	"license": "MIT",
+	"description": "",
+	"private": true,
+	"main": "./dist/gate/index.js",
+	"typings": "./dist/gate/index.d.ts",
 	"type": "module",
 	"scripts": {
-		"dev": "pnpm --filter=./application/* run dev",
-		"build": "pnpm tsm ./scripts/build.ts",
-		"file-to-workspace-deps": "pnpm tsm ./scripts/modify-deps/file-to-workspace-deps.ts",
-		"workspace-to-file-deps": "pnpm tsm ./scripts/modify-deps/workspace-to-file-deps.ts",
-		"clean:node": "rimraf **/node_modules",
-		"clean:dist": "rimraf **/dist"
+		"dev": "vite",
+		"preview": "vite preview",
+		"build": "vite build",
+		"updatedeps": "pnpm update --latest --interactive",
+		"typecheck": "tsc --project ./src/tsconfig.json"
+	},
+	"dependencies": {
+		"@roenlie/mimic-core": "^0.0.22",
+		"@roenlie/mimic-elements": "^0.0.7",
+		"@roenlie/mimic-lit": "^0.0.31",
+		"@vaadin/router": "^1.7.5",
+		"lit": "^2.7.5",
+		"reflect-metadata": "^0.1.13",
+		"tslib": "^2.6.0"
 	},
 	"devDependencies": {
+		"@roenlie/package-toolbox": "^0.0.17",
 		"@roenlie/eslint-config": "^1.0.0",
 		"@roenlie/tsconfig": "^1.0.0",
 		"@types/node": "18.15.11",
@@ -21,6 +38,8 @@
 		"globby": "^13.1.4",
 		"rimraf": "^5.0.0",
 		"tsm": "^2.3.0",
-		"typescript": "^5.0.4"
+		"typescript": "^5.0.4",
+		"dotenv": "^16.3.1",
+		"vite": "^4.3.9"
 	}
 }

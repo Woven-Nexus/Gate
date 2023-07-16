@@ -1,7 +1,7 @@
 using dotenv.net;
 using GateCDN.Database;
 using GateCDN.Features.Instance;
-using GateCDN.Features.Routes;
+using GateCDN.Features.Route;
 using GateCDN.Features.Storage;
 using GateCDN.Startup;
 using Microsoft.AspNetCore.Http.Json;
