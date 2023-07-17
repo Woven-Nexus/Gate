@@ -7,7 +7,7 @@ import { when } from 'lit/directives/when.js';
 
 declare global {
 	interface HTMLElementTagNameMap {
-		'mm-item-tree': ItemTreeElement<string, string>;
+		'mm-item-tree': ItemTreeElement;
 	}
 }
 
@@ -16,15 +16,15 @@ export type ComputedFlat<A> = {
 } & unknown
 
 export type RecTreeItem<
-	IdKey extends keyof any,
-	ChildKey extends keyof any
+	IdKey extends string | number,
+	ChildKey extends string | number
 > = {[x: keyof any]: any;}
 & {[idKey in IdKey]: keyof any;}
 & {[childkey in ChildKey]?: RecTreeItem<IdKey, ChildKey>[];}
 
 export type TreeItem<
-	IdKey extends keyof any = 'id',
-	ChildKey extends keyof any = 'children'
+	IdKey extends string | number = 'id',
+	ChildKey extends string | number = 'children'
 > = ComputedFlat<RecTreeItem<IdKey, ChildKey>>;
 
 
@@ -32,8 +32,8 @@ export type TreeItem<
 export class ItemTreeElement extends LitElement {
 
 	@property({ type: Array }) public items: TreeItem[];
-	@property({ attribute: false }) public label: (item: TreeItem) => string;
-	@property({ attribute: false }) public idKey: string;
+	@property({ attribute: false }) public label: (item: any) => string;
+	@property({ type: String }) public idKey: string;
 	@property({ attribute: false }) public childrenKey: string;
 
 	protected Node(item: TreeItem) {

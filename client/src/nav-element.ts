@@ -62,7 +62,7 @@ export class GateNavElement extends LitElement {
 
 				<mm-item-tree
 					.items=${ this.fakeData }
-					.label=${ (item: TreeItem<'id', 'children'>) => item.id }
+					.label=${ (item: {id: string;}) => item.id }
 					.idKey=${ 'id' }
 					.childrenKey=${ 'children' }
 				></mm-item-tree>
