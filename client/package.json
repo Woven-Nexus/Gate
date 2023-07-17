@@ -25,12 +25,13 @@
 		"tslib": "^2.6.0"
 	},
 	"devDependencies": {
+		"@faker-js/faker": "^8.0.2",
 		"@roenlie/eslint-config": "^1.0.0",
 		"@roenlie/package-toolbox": "^0.0.17",
-		"@roenlie/tsconfig": "^1.0.0",
+		"@roenlie/tsconfig": "^1.0.1",
 		"@types/node": "20.4.2",
-		"@typescript-eslint/eslint-plugin": "^6.0.0",
-		"@typescript-eslint/parser": "^6.0.0",
+		"@typescript-eslint/eslint-plugin": "^6.1.0",
+		"@typescript-eslint/parser": "^6.1.0",
 		"dotenv": "^16.3.1",
 		"eslint": "^8.45.0",
 		"eslint-plugin-import": "^2.27.5",

@@ -5,18 +5,30 @@ import { includeCE } from '@roenlie/mimic-lit/injectable';
 import { css, html, LitElement } from 'lit';
 import { customElement, property, query, state } from 'lit/decorators.js';
 
+import { ItemTreeElement, TreeItem } from './components/item-tree-element.js';
+import { createTreeItem } from './fake-data/nav-menu.js';
+
 includeCE(
 	NavRailElement,
 	NavRailItemElement,
 	IconElement,
 	DrawerCmp,
+	ItemTreeElement,
 );
 
 
 @customElement('gate-nav')
 export class GateNavElement extends LitElement {
 
+	protected fakeData = [ createTreeItem(5) ];
+
 	@query('mm-drawer') protected drawerEl: DrawerCmp;
+
+	public override connectedCallback(): void {
+		super.connectedCallback();
+
+		console.log(this.fakeData);
+	}
 
 	public override render() {
 		return html`
@@ -42,10 +54,18 @@ export class GateNavElement extends LitElement {
 
 		<mm-drawer
 			label="Applications"
+			placement="start"
 			open
 		>
 			<section>
 				Here goes the application list
+
+				<mm-item-tree
+					.items=${ this.fakeData }
+					.label=${ (item: TreeItem<'id', 'children'>) => item.id }
+					.idKey=${ 'id' }
+					.childrenKey=${ 'children' }
+				></mm-item-tree>
 			</section>
 		</mm-drawer>
 		`;

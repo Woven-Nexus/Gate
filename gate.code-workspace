@@ -74,6 +74,16 @@
 					}
 				]
 			},
+			{
+				"splitTerminals": [
+					{
+						"name": "server",
+						"commands": [
+							"cd ../server/gatecdn"
+						]
+					}
+				]
+			},
 		],
 		"editor.tabSize": 3,
 		"liveServer.settings.multiRootWorkspaceName": "client"
