@@ -1,4 +1,3 @@
-import { includeCE } from '@roenlie/mimic-lit/injectable';
 import { sharedStyles } from '@roenlie/mimic-lit/styles';
 import { css, html, LitElement } from 'lit';
 import { customElement } from 'lit/decorators.js';
@@ -6,7 +5,7 @@ import { customElement } from 'lit/decorators.js';
 import { SERVER_URL } from './constants.js';
 import { GateNavElement } from './nav-element.js';
 
-includeCE(GateNavElement);
+[ GateNavElement ];
 
 
 @customElement('gate-app')

@@ -1,20 +1,19 @@
-import { DrawerCmp } from '@roenlie/mimic-elements/drawer';
-import { IconElement } from '@roenlie/mimic-elements/icon';
-import { NavRailElement, NavRailItemElement } from '@roenlie/mimic-elements/nav-rail';
-import { includeCE } from '@roenlie/mimic-lit/injectable';
+import { MMDrawer } from '@roenlie/mimic-elements/drawer';
+import { MMIcon } from '@roenlie/mimic-elements/icon';
+import { MMNavRail, MMNavRailItem } from '@roenlie/mimic-elements/nav-rail';
 import { css, html, LitElement } from 'lit';
-import { customElement, property, query, state } from 'lit/decorators.js';
+import { customElement, query } from 'lit/decorators.js';
 
-import { ItemTreeElement, TreeItem } from './components/item-tree-element.js';
+import { ItemTreeElement } from './components/item-tree-element.js';
 import { createTreeItem } from './fake-data/nav-menu.js';
 
-includeCE(
-	NavRailElement,
-	NavRailItemElement,
-	IconElement,
-	DrawerCmp,
+[
+	MMNavRail,
+	MMNavRailItem,
+	MMIcon,
+	MMDrawer,
 	ItemTreeElement,
-);
+];
 
 
 @customElement('gate-nav')
@@ -22,7 +21,7 @@ export class GateNavElement extends LitElement {
 
 	protected fakeData = [ createTreeItem(5) ];
 
-	@query('mm-drawer') protected drawerEl: DrawerCmp;
+	@query('mm-drawer') protected drawerEl: MMDrawer;
 
 	public override connectedCallback(): void {
 		super.connectedCallback();

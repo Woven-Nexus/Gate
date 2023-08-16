@@ -4,6 +4,6 @@
 		"@roenlie/eslint-config"
 	],
 	"rules": {
-		"no-multi-spaces": "off"
+		"@typescript-eslint/consistent-indexed-object-style": "off"
 	}
 }

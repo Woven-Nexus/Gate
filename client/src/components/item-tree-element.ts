@@ -22,6 +22,7 @@ export type RecTreeItem<
 & {[idKey in IdKey]: keyof any;}
 & {[childkey in ChildKey]?: RecTreeItem<IdKey, ChildKey>[];}
 
+
 export type TreeItem<
 	IdKey extends string | number = 'id',
 	ChildKey extends string | number = 'children'
@@ -31,12 +32,12 @@ export type TreeItem<
 @customElement('mm-item-tree')
 export class ItemTreeElement extends LitElement {
 
-	@property({ type: Array }) public items: TreeItem[];
-	@property({ attribute: false }) public label: (item: any) => string;
+	@property({ type: Array }) public items: Record<keyof any, any>[];
+	@property({ type: Object, attribute: false }) public label: (item: any) => string;
 	@property({ type: String }) public idKey: string;
 	@property({ attribute: false }) public childrenKey: string;
 
-	protected Node(item: TreeItem) {
+	protected Node(item: Record<keyof any, any>) {
 		return html`
 		<li>
 			${ when(item[this.childrenKey]?.length, () => html``) }
